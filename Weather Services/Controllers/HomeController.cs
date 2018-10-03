@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Weather_Services.Models;
 
 namespace Weather_Services.Controllers
 {
@@ -10,9 +11,16 @@ namespace Weather_Services.Controllers
             return View();
         }
 
-        public ActionResult WeatherJs()
+        public ActionResult WeatherOrNot()
         {
             return View();
+        }
+
+        public JsonResult GetWeather()
+        {
+            Weather weather = new Weather();
+            return Json(weather.GetWeatherForcast(), JsonRequestBehavior.AllowGet);
+
         }
     }
 }
