@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<h2>WeatherJs</h2>
+<p id="name"></p>
+<p id="temp"></p>
+<p id="humidity"></p>
+<button class="btn btn-outline-primary">Get Weather</button>
+<script>
+    $(document).ready(function () {
+        $("button").click(function (response) {
+            $.get("http://api.openweathermap.org/data/2.5/weather?q=Lahore&APPID=1f630ef81159132ae0101b24851e5f6e&units=imperial", function (response) {
+                console.log(response);
+                $('#name').text(response.name);
+                $('#temp').text(response.main.temp);
+                $('#humidity').text(response.main.humidity);
+            });
+        });
+    });
+</script>
